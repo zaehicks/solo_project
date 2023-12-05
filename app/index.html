@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palette Picker</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div>
+          <img id="color_logo" src="src/imgs/color_logo.png"/>
+        </div>
+      </nav>
+      <h1 id="title_picker">Palette Picker</h1>
+    </header>
+    <main>
+      <form>
+        <h2>Add a Palette</h2>
+        <label for="paletteTtitle">Palette Title: 
+          <input type="text" id="paletteTitle" name="paletteTitle" required>
+        </label>
+        <label>Color #1
+          <input type="color" name="color1" required> 
+        </label>
+        <label>Color #2
+          <input type="color" name="color2" required>
+        </label>
+        <label>Color #3
+          <input type="color" name="color3" required>
+        </label>
+      
+
+        <fieldset>
+          <legend>Temperature</legend>
+          <label>
+            <input id="radio1" type="radio" name="temperature" value="warm" checked> Warm
+          </label>
+          <label>
+            <input id="radio2" type="radio" name="temperature" value="neutral"> Neutral
+          </label>
+          <label>
+           <input id="radio3" type="radio" name="temperature" value="cool"> Cool
+          </label>
+        </fieldset>
+
+        <button type="submit">Create the palette</button>
+      </form>
+
+      <h2>Palettes</h2>
+
+      <section>
+
+      </section>
+    </main>
+    <!-- <div id="app"></div> -->
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
+
+
