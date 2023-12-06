@@ -2,25 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="src/imgs/color_logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Palette Picker</title>
   </head>
   <body>
     <header>
-      <nav>
-        <div>
-          <img id="color_logo" src="src/imgs/color_logo.png"/>
-        </div>
-      </nav>
       <h1 id="title_picker">Palette Picker</h1>
     </header>
     <main>
       <form>
         <h2>Add a Palette</h2>
-        <label for="paletteTtitle">Palette Title: 
-          <input type="text" id="paletteTitle" name="paletteTitle" required>
+
+        <!-- Palette Name -->
+        <label for="palette-title">Palette Title: 
+          <input type="text" id="palette-title" name="title" required>
         </label>
+
+        <!-- Color Pickers -->
         <label>Color #1
           <input type="color" name="color1" required> 
         </label>
@@ -31,7 +30,7 @@
           <input type="color" name="color3" required>
         </label>
       
-
+        <!-- Radio Sets -->
         <fieldset>
           <legend>Temperature</legend>
           <label>
@@ -44,14 +43,15 @@
            <input id="radio3" type="radio" name="temperature" value="cool"> Cool
           </label>
         </fieldset>
-
+        
+        <!-- Submit Button -->
         <button type="submit">Create the palette</button>
       </form>
 
       <h2>Palettes</h2>
 
-      <section>
-
+      <section id="paletteContainer">
+        
       </section>
     </main>
     <!-- <div id="app"></div> -->
