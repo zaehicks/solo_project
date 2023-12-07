@@ -7,13 +7,51 @@ import { v4 as uuidv4 } from "uuid";
 // console.log(uuidv4());
 
 const handleSubmit = (e) => {
+  e.preventDefault()
   const formData = new FormData(form);
   const formObj = Object.fromEntries(formData);
   const uniqueId = uuidv4()
-  localStorage.setItem(uniqueId, JSON.stringify(formObj));
+  formObj.uniqueId = uniqueId;
+  localStorage.setItem(uniqueId, JSON.stringify(formObj))
+  console.log(formObj)
+  const div = document.createElement("div");
+    div.className = "divContainer"
+    div.dataset.uniqueKey = uniqueId;
+    div.innerHTML = `<div class="palette">
+    <h3 class="custom_palette">${formObj.title}</h3>
+    <div class = "paletteColor">
+      <div class= "colorpal">
+      <div class= "colorpalBack">
+        <p class="text-examples" style="background-color: ${formObj.color1}"> Text Example 1</p>
+      </div>
+        <button class="copy-button">Copy ${formObj.color1}</button>
+    </div>
+      <div class = "colorpal">
+        <div class= "colorpalBack">
+          <p class= "text-examples" style="background-color: ${formObj.color2}"> Text Example 2</p>
+        </div>
+        <button class="copy-button">Copy ${formObj.color2}</button>
+      </div>
+      <div class = "colorpal">
+        <div class= "colorpalBack">
+        <p class= "text-examples" style="background-color: ${formObj.color3}"> Text Example 3</p>
+        </div>
+        <button class="copy-button">Copy ${formObj.color3}</button>
+      </div>
+    <div>
+    <button class="delete-button">Delete Palette</button>
+    <div class="temperature-banner neutral">${formObj.temperature}</div>
+    </div>
+    </div>
+</div>
+`
+const paletteContainer = document.getElementById("paletteContainer");
+paletteContainer.prepend(div);
 };
 
+
 const handleRemoveSubmit = (e) => {
+  e.preventDefault()
   if (e.target.className === "delete-button") {
     const paletteContainer = e.target.closest('.divContainer');
 
@@ -34,6 +72,7 @@ const handleRemoveSubmit = (e) => {
       }, 500); // Animation time adjuster (for deleting palette)
     }
   }
+  
 };
 
 const addUserPalettes = () => {
@@ -45,6 +84,8 @@ const addUserPalettes = () => {
   }
   
 }
+
+
 const form = document.querySelector("form");
 form.addEventListener("submit", handleSubmit);
 
@@ -55,6 +96,8 @@ const getPalettes = () => {
   const paletteContainer = document.getElementById("paletteContainer");
   palettesData.forEach((palette) => {
     const div = document.createElement("div");
+    const uniqueId = palette.uniqueId
+    div.dataset.uniqueKey = uniqueId;
     div.className = "divContainer"
     div.innerHTML = `<div class="palette">
     <h3 class="custom_palette">${palette.title}</h3>
@@ -93,8 +136,7 @@ const getPalettes = () => {
 const main = () => {
 addUserPalettes()
 getPalettes();
-document.getElementById("paletteContainer").addEventListener('click', handleRemoveSubmit)
-  
+document.getElementById("paletteContainer").addEventListener('click', handleRemoveSubmit);
 }
 
 main()

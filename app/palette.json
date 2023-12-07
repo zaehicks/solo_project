@@ -1,7 +1,7 @@
 [
   {
     "uuid": "5affd4e4-418d-4b62-beeb-1c0f7aaff753",
-    "title": "Marcy",
+    "title": "Marcy *Defaults*",
     "color1": "#c92929",
     "color2": "#2f5a8b",
     "color3": "#327a5f",
@@ -9,7 +9,7 @@
   },
   {
     "uuid": "32521ef4-d64c-4906-b06d-f3d0d6b16e0f",
-    "title": "Sleek and Modern",
+    "title": "Sleek and Modern *Defaults*",
     "color1": "#3A5199",
     "color2": "#2F2E33",
     "color3": "#D5D6D2",
@@ -17,7 +17,7 @@
   },
   {
     "uuid": "8b144d62-faa7-4226-87e1-096d7c1bedc7",
-    "title": "Winter Reds",
+    "title": "Winter Reds *Defaults*",
     "color1": "#A10115",
     "color2": "#C0B2B5",
     "color3": "#600A0A",
