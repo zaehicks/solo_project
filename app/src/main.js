@@ -10,6 +10,7 @@ const handleSubmit = (e) => {
   const formObj = Object.fromEntries(formData);
   const uniqueId = uuidv4();
   formObj.uniqueId = uniqueId;
+  console.log(formObj);
   localStorage.setItem(uniqueId, JSON.stringify(formObj));
   const div = document.createElement("div");
   div.className = "divContainer";
@@ -19,19 +20,19 @@ const handleSubmit = (e) => {
     <div class = "paletteColor">
       <div class= "colorpal">
       <div class= "colorpalBack">
-        <p class="text-examples" style="background-color: ${formObj.color1}"> Text Example 1</p>
+        <p class="text-examples" style="background-color: ${formObj.color1}"> Text &nbsp;<span>Example 1</span></p>
       </div>
         <button class="copy-button">Copy ${formObj.color1}</button>
     </div>
       <div class = "colorpal">
         <div class= "colorpalBack">
-          <p class= "text-examples" style="background-color: ${formObj.color2}"> Text Example 2</p>
+          <p class= "text-examples" style="background-color: ${formObj.color2}"> Text &nbsp;<span>Example 2</span></p>
         </div>
         <button class="copy-button">Copy ${formObj.color2}</button>
       </div>
       <div class = "colorpal">
         <div class= "colorpalBack">
-        <p class= "text-examples" style="background-color: ${formObj.color3}"> Text Example 3</p>
+        <p class= "text-examples" style="background-color: ${formObj.color3}"> Text &nbsp;<span>Example 3</span></p>
         </div>
         <button class="copy-button">Copy ${formObj.color3}</button>
       </div>
@@ -77,7 +78,6 @@ const addUserPalettes = () => {
     const key = localStorage.key(i);
     const storedData = JSON.parse(localStorage.getItem(key));
     palettesData.unshift(storedData);
-    console.log(storedData);
   }
 };
 
@@ -90,25 +90,25 @@ const getPalettes = () => {
     const div = document.createElement("div");
     const uniqueId = palette.uniqueId;
     div.dataset.uniqueKey = uniqueId;
-    div.className = "divContainer";
+    div.className = "divContainer";   
     div.innerHTML = `<div class="palette">
     <h3 class="custom_palette">${palette.title}</h3>
     <div class = "paletteColor">
       <div class= "colorpal">
       <div class= "colorpalBack">
-        <p class="text-examples" style="background-color: ${palette.color1}"> Text Example 1</p>
+        <p class="text-examples" style="background-color: ${palette.color1}"> Text &nbsp;<span>Example 1</span></p>
       </div>
         <button class="copy-button">Copy ${palette.color1}</button>
     </div>
       <div class = "colorpal">
         <div class= "colorpalBack">
-          <p class= "text-examples" style="background-color: ${palette.color2}"> Text Example 2</p>
+          <p class= "text-examples" style="background-color: ${palette.color2}"> Text &nbsp;<span>Example 2</span></p>
         </div>
         <button class="copy-button">Copy ${palette.color2}</button>
       </div>
       <div class = "colorpal">
         <div class= "colorpalBack">
-        <p class= "text-examples" style="background-color: ${palette.color3}"> Text Example 3</p>
+        <p class= "text-examples" style="background-color: ${palette.color3}"> Text &nbsp;<span>Example 3</span></p>
         </div>
         <button class="copy-button">Copy ${palette.color3}</button>
       </div>

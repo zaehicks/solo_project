@@ -30,6 +30,8 @@ main {
 #title_picker {
   font-size: 1.5rem;
   animation: colorChange 5s infinite;
+  /* display: flex;
+  justify-content: center; */
 }
 
 form {
@@ -179,6 +181,10 @@ button {
 
 .divContainer.fade-in {
   animation: fadeIn 0.5s ease-in-out;
+}
+
+span {
+  color: black;
 }
 
 
