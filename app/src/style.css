@@ -29,6 +29,7 @@ main {
 
 #title_picker {
   font-size: 1.5rem;
+  animation: colorChange 5s infinite;
 }
 
 form {
@@ -155,6 +156,24 @@ button {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes colorChange {
+  0% {
+    color: red;
+  }
+  25% {
+    color: blue;
+  }
+  50% {
+    color: green;
+  }
+  75% {
+    color: yellow;
+  }
+  100% {
+    color: orange;
   }
 }
 
