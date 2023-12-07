@@ -4,20 +4,17 @@ import palettesData from "../palette.json";
 
 import { v4 as uuidv4 } from "uuid";
 
-// console.log(uuidv4());
-
 const handleSubmit = (e) => {
-  e.preventDefault()
+  e.preventDefault();
   const formData = new FormData(form);
   const formObj = Object.fromEntries(formData);
-  const uniqueId = uuidv4()
+  const uniqueId = uuidv4();
   formObj.uniqueId = uniqueId;
-  localStorage.setItem(uniqueId, JSON.stringify(formObj))
-  console.log(formObj)
+  localStorage.setItem(uniqueId, JSON.stringify(formObj));
   const div = document.createElement("div");
-    div.className = "divContainer"
-    div.dataset.uniqueKey = uniqueId;
-    div.innerHTML = `<div class="palette">
+  div.className = "divContainer";
+  div.dataset.uniqueKey = uniqueId;
+  div.innerHTML = `<div class="palette">
     <h3 class="custom_palette">${formObj.title}</h3>
     <div class = "paletteColor">
       <div class= "colorpal">
@@ -44,24 +41,25 @@ const handleSubmit = (e) => {
     </div>
     </div>
 </div>
-`
-const paletteContainer = document.getElementById("paletteContainer");
-paletteContainer.prepend(div);
+`;
+  const paletteContainer = document.getElementById("paletteContainer");
+  paletteContainer.prepend(div);
 };
 
-
 const handleRemoveSubmit = (e) => {
-  e.preventDefault()
+  e.preventDefault();
   if (e.target.className === "delete-button") {
-    const paletteContainer = e.target.closest('.divContainer');
+    const paletteContainer = e.target.closest(".divContainer");
 
     if (paletteContainer) {
       const uniqueKey = paletteContainer.dataset.uniqueKey;
 
-      paletteContainer.classList.add('pop-out');
+      paletteContainer.classList.add("pop-out");
 
       setTimeout(() => {
-        const indexToRemove = palettesData.findIndex(palette => palette.uniqueKey === uniqueKey);
+        const indexToRemove = palettesData.findIndex(
+          (palette) => palette.uniqueKey === uniqueKey
+        );
         if (indexToRemove !== -1) {
           palettesData.splice(indexToRemove, 1);
         }
@@ -72,33 +70,27 @@ const handleRemoveSubmit = (e) => {
       }, 500); // Animation time adjuster (for deleting palette)
     }
   }
-  
 };
 
 const addUserPalettes = () => {
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
     const storedData = JSON.parse(localStorage.getItem(key));
-    palettesData.unshift(storedData)
-    console.log(storedData)
+    palettesData.unshift(storedData);
+    console.log(storedData);
   }
-  
-}
-
+};
 
 const form = document.querySelector("form");
 form.addEventListener("submit", handleSubmit);
-
-
-
 
 const getPalettes = () => {
   const paletteContainer = document.getElementById("paletteContainer");
   palettesData.forEach((palette) => {
     const div = document.createElement("div");
-    const uniqueId = palette.uniqueId
+    const uniqueId = palette.uniqueId;
     div.dataset.uniqueKey = uniqueId;
-    div.className = "divContainer"
+    div.className = "divContainer";
     div.innerHTML = `<div class="palette">
     <h3 class="custom_palette">${palette.title}</h3>
     <div class = "paletteColor">
@@ -131,12 +123,12 @@ const getPalettes = () => {
   });
 };
 
-
-
 const main = () => {
-addUserPalettes()
-getPalettes();
-document.getElementById("paletteContainer").addEventListener('click', handleRemoveSubmit);
-}
+  addUserPalettes();
+  getPalettes();
+  document
+    .getElementById("paletteContainer")
+    .addEventListener("click", handleRemoveSubmit);
+};
 
-main()
+main();

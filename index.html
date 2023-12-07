@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/solo_project/assets/color_logo--YHl-Oh-.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palette Picker</title>
+    <script type="module" crossorigin src="/solo_project/assets/index-vbFX3z4u.js"></script>
+    <link rel="stylesheet" crossorigin href="/solo_project/assets/index-fEqx-lkV.css">
+  </head>
+  <body>
+    <header>
+      <h1 id="title_picker">Palette Picker</h1>
+    </header>
+    <main>
+      <form>
+        <h2>Add a Palette</h2>
+
+        <!-- Palette Name -->
+        <label for="palette-title">Palette Title: 
+          <input type="text" id="palette-title" name="title" required>
+        </label>
+
+        <!-- Color Pickers -->
+        <label>Color #1
+          <input type="color" name="color1" required> 
+        </label>
+        <label>Color #2
+          <input type="color" name="color2" required>
+        </label>
+        <label>Color #3
+          <input type="color" name="color3" required>
+        </label>
+      
+        <!-- Radio Sets -->
+        <fieldset>
+          <legend>Temperature</legend>
+          <label>
+            <input id="radio1" type="radio" name="temperature" value="warm" checked> Warm
+          </label>
+          <label>
+            <input id="radio2" type="radio" name="temperature" value="neutral"> Neutral
+          </label>
+          <label>
+           <input id="radio3" type="radio" name="temperature" value="cool"> Cool
+          </label>
+        </fieldset>
+        
+        <!-- Submit Button -->
+        <button type="submit">Create the palette</button>
+      </form>
+
+      <h2>Palettes</h2>
+
+      <section id="paletteContainer">
+        
+      </section>
+    </main>
+    <!-- <div id="app"></div> -->
+  </body>
+</html>
+
+
