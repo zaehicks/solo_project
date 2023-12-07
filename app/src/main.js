@@ -126,9 +126,7 @@ const getPalettes = () => {
 const main = () => {
   addUserPalettes();
   getPalettes();
-  document
-    .getElementById("paletteContainer")
-    .addEventListener("click", handleRemoveSubmit);
+  document.getElementById("paletteContainer").addEventListener("click", handleRemoveSubmit);
 };
 
 main();
