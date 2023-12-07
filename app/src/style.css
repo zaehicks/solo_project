@@ -113,10 +113,11 @@ button {
   /* background-color: blue; */
   display: flex;
   margin: 1rem;
-  padding: 5px;
-  
+  padding: 5px; 
 
 }
+
+
 
 .colorpalBack {
   background: linear-gradient(to bottom, white 50%, black 50%);
