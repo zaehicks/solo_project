@@ -22,19 +22,19 @@ const handleSubmit = (e) => {
       <div class= "colorpalBack">
         <p class="text-examples" style="background-color: ${formObj.color1}"> Text &nbsp;<span>Example 1</span></p>
       </div>
-        <button class="copy-button">Copy ${formObj.color1}</button>
+        <button class="copy-button" data-color='${formObj.color1}'>Copy ${formObj.color1}</button>
     </div>
       <div class = "colorpal">
         <div class= "colorpalBack">
           <p class= "text-examples" style="background-color: ${formObj.color2}"> Text &nbsp;<span>Example 2</span></p>
         </div>
-        <button class="copy-button">Copy ${formObj.color2}</button>
+        <button class="copy-button" data-color='${formObj.color2}'>Copy ${formObj.color2}</button>
       </div>
       <div class = "colorpal">
         <div class= "colorpalBack">
         <p class= "text-examples" style="background-color: ${formObj.color3}"> Text &nbsp;<span>Example 3</span></p>
         </div>
-        <button class="copy-button">Copy ${formObj.color3}</button>
+        <button class="copy-button" data-color='${formObj.color3}'>Copy ${formObj.color3}</button>
       </div>
     <div>
     <button class="delete-button">Delete Palette</button>
@@ -45,6 +45,8 @@ const handleSubmit = (e) => {
 `;
   const paletteContainer = document.getElementById("paletteContainer");
   paletteContainer.prepend(div);
+
+  addCopyButtonListeners();
 };
 
 const handleRemoveSubmit = (e) => {
@@ -73,6 +75,8 @@ const handleRemoveSubmit = (e) => {
   }
 };
 
+
+
 const addUserPalettes = () => {
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
@@ -81,8 +85,20 @@ const addUserPalettes = () => {
   }
 };
 
+
+
+
 const form = document.querySelector("form");
 form.addEventListener("submit", handleSubmit);
+
+const copyToClipboard = (text) => {
+  const tempTextArea = document.createElement("textarea");
+  tempTextArea.value = text;
+  document.getElementById('paletteContainer').appendChild(tempTextArea);
+  tempTextArea.select();
+  document.execCommand("copy");
+  document.getElementById('paletteContainer').removeChild(tempTextArea);
+};
 
 const getPalettes = () => {
   const paletteContainer = document.getElementById("paletteContainer");
@@ -98,19 +114,19 @@ const getPalettes = () => {
       <div class= "colorpalBack">
         <p class="text-examples" style="background-color: ${palette.color1}"> Text &nbsp;<span>Example 1</span></p>
       </div>
-        <button class="copy-button">Copy ${palette.color1}</button>
+        <button class="copy-button" data-color="${palette.color1}">Copy ${palette.color1}</button>
     </div>
       <div class = "colorpal">
         <div class= "colorpalBack">
           <p class= "text-examples" style="background-color: ${palette.color2}"> Text &nbsp;<span>Example 2</span></p>
         </div>
-        <button class="copy-button">Copy ${palette.color2}</button>
+        <button class="copy-button" data-color="${palette.color2}">Copy ${palette.color2}</button>
       </div>
       <div class = "colorpal">
         <div class= "colorpalBack">
         <p class= "text-examples" style="background-color: ${palette.color3}"> Text &nbsp;<span>Example 3</span></p>
         </div>
-        <button class="copy-button">Copy ${palette.color3}</button>
+        <button class="copy-button" data-color="${palette.color3}">Copy ${palette.color3}</button>
       </div>
     <div>
     <button class="delete-button">Delete Palette</button>
@@ -123,10 +139,25 @@ const getPalettes = () => {
   });
 };
 
+const addCopyButtonListeners = () => {
+  const copyButtons = document.querySelectorAll(".copy-button");
+  copyButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const colorCode = button.dataset.color;
+      copyToClipboard(colorCode);
+      button.innerText = `Copied! :) ${colorCode}`;
+    });
+  });
+};
+
 const main = () => {
   addUserPalettes();
   getPalettes();
   document.getElementById("paletteContainer").addEventListener("click", handleRemoveSubmit);
+  addCopyButtonListeners();
+
 };
 
 main();
+
+
