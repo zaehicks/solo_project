@@ -75,10 +75,8 @@ button {
   background-color: #333333;
   border: none;
   margin: 10px;
-  min-width: 20rem;
-  max-width: 20rem;
-  min-height: 22rem;
-  max-height: 22rem;
+  width: 20rem;
+  height: 22rem;
   
   
 }
@@ -185,9 +183,9 @@ button {
   animation: fadeIn 0.5s ease-in-out;
 }
 
-span {
+/* span {
   color: black;
-}
+} */
 
 
 
