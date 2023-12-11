@@ -25,6 +25,13 @@ main {
   flex-direction: column;
 }
 
+header {
+  display: flex;
+  justify-content: center;
+  background-color: #333333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 5);
+}
+
 
 
 #title_picker {
@@ -43,6 +50,7 @@ form {
   background-color: #333333;
   border: none;
   width: 18rem;
+  margin-top: 1rem;
 }
 
 fieldset {
