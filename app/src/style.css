@@ -191,6 +191,39 @@ button {
   animation: fadeIn 0.5s ease-in-out;
 }
 
+.temperature-banner {
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+
+  background-color: #3498db;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  animation: colorChange 5s infinite alternate;
+
+}
+
+.temperature-banner:hover {
+  background-color: #e74c3c;
+  transform: translateY(-5px);
+}
+
+
+@keyframes colorChange {
+  0% {
+    background-color: #181818;
+  }
+  50% {
+    background-color: #4E6A87;
+  }
+  100% {
+    background-color: #999999;
+  }
+}
+
+
 /* span {
   color: black;
 } */
